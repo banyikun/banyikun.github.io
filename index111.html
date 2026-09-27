@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yikun Ban | 班义琨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.65;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 320px;
+            background: white;
+            padding: 2rem 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid #e5e7eb;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            display: block;
+            border: 3px solid #e5e7eb;
+        }
+
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            color: #1f2937;
+        }
+
+        .sidebar .title {
+            font-size: 0.95rem;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .sidebar .location {
+            font-size: 0.9rem;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.4rem 0;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        .xhs-icon {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            background: white;
+            padding: 3rem;
+            max-width: 900px;
+        }
+
+        .main-content h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .main-content h2 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1.2rem;
+            color: #1f2937;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+
+        .main-content p {
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+
+        .main-content strong {
+            color: #1f2937;
+        }
+
+        .main-content a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .main-content a:hover {
+            text-decoration: underline;
+        }
+
+        .interests {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .interests li {
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+        }
+
+        /* News */
+        .news-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .news-item {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid #3b82f6;
+            padding: 0.8rem 0 0.8rem 1rem;
+        }
+
+        .news-date {
+            font-weight: 600;
+            color: #1f2937;
+            margin-right: 0.5rem;
+        }
+
+        .hf-badge {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
+        /* Publications */
+        .pub-item {
+            margin-bottom: 0.85rem;
+            padding-bottom: 0.85rem;
+            line-height: 1.45;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .pub-item:last-child {
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #1f2937;
+            margin-bottom: 0.2rem;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .pub-venue {
+            color: #3b82f6;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .pub-links {
+            display: inline;
+            margin-left: 0.35rem;
+            font-weight: 400;
+        }
+
+        .pub-links a {
+            display: inline-block;
+            margin-right: 0.35rem;
+            white-space: nowrap;
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+
+        .publication-note {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        /* Education */
+        .edu-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-period {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.3rem;
+        }
+
+        .edu-degree {
+            color: #4b5563;
+            margin-bottom: 0.2rem;
+        }
+
+        .edu-school {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Mobile Responsive */
+        .mobile-header {
+            display: none;
+        }
+
+        @media (max-width: 968px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .mobile-header {
+                display: block;
+                background: white;
+                padding: 2rem;
+                text-align: center;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .mobile-header img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin: 0 auto 1rem;
+                display: block;
+                border: 3px solid #e5e7eb;
+            }
+
+            .mobile-header h1 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .mobile-header .title {
+                font-size: 0.9rem;
+                color: #6b7280;
+                margin-bottom: 1rem;
+            }
+
+            .mobile-social {
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                font-size: 0.85rem;
+            }
+
+            .mobile-social .xhs-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem;
+                max-width: 100%;
+            }
+
+            .main-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .main-content h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-header">
+        <img src="images/me6.JPG" alt="Yikun Ban">
+        <h1>Yikun Ban | 班义琨</h1>
+        <div class="title">
+            Professor @Beihang University
+        </div>
+        <div class="mobile-social">
+            <a href="mailto:yikunb@buaa.edu.cn">[Email]</a>
+            <a href="https://scholar.google.com/citations?user=oGa-XpMAAAAJ&hl=en&oi=ao" target="_blank">[Google Scholar]</a>
+            <a href="https://www.xiaohongshu.com/user/profile/5c23a96c000000000701199a" target="_blank">[小红书]</a>
+            <a href="https://x.com/YikunBan" target="_blank">[X]</a>
+            <a href="https://www.linkedin.com/in/yikun-ban-20431510b/" target="_blank">[Linkedin]</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <img src="images/me6.JPG" alt="Yikun Ban" class="profile-img">
+            
+            <h1>Yikun Ban</h1>
+            <div class="title">
+                Professor<br>
+                School of Computer Science and Engineering<br>
+                Beihang University
+            </div>
+            
+            <div class="location">📍 Beijing, China</div>
+            
+            <div class="social-links">
+                <a href="mailto:yikunb@buaa.edu.cn">[Email]</a>
+                <a href="https://scholar.google.com/citations?user=oGa-XpMAAAAJ&hl=en&oi=ao" target="_blank">[Google Scholar]</a>
+                <a href="https://www.xiaohongshu.com/user/profile/5c23a96c000000000701199a" target="_blank">[小红书]</a>                 
+                <a href="https://x.com/YikunBan" target="_blank">[X]</a>
+                <a href="https://www.linkedin.com/in/yikun-ban-20431510b/" target="_blank">[Linkedin]</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1>Yikun Ban 班义琨</h1>
+            
+            <p>I am a professor in the School of Computer Science and Engineering at <strong>Beihang University</strong> and a member of the State Key Laboratory of Software Development Environment. 
+                Previously, I was a postdoc and obtained my Ph.D. degree at <strong>Computer Science, University of Illinois at Urbana-Champaign</strong>.
+Prior to this, I obtained my Master's degree from <strong>EECS, Peking University</strong> and bachelor's degree from <strong>Wuhan University</strong>.</p>
+
+            <p>I am interested in principled algorithms in the space of reinforcement learning and deep learning, to solve real-world sequential decision-making problems. Current research topics:</p>
+
+            <ul class="interests">
+                <li><strong>Reinforcement Learning Foundation</strong></li>
+                <li><strong>Multi-Agent Reinforcement Learning</strong></li>
+                <li><strong>Ensemble Learning of LLMs</strong></li>
+            </ul>
+
+
+            <h2>News</h2>
+            <ul class="news-list">
+                <li class="news-item"><span class="news-date">[2026.9]</span> Four papers were accepted by NeurIPS'26 as posters.</li>
+
+                <li class="news-item"><span class="news-date">[2026.5]</span> Two papers were accepted by KDD'26. </span></li>
+
+                <li class="news-item"><span class="news-date">[2026.4]</span> Four papers were accepted by ICML'26. </span></li>
+
+                <li class="news-item"><span class="news-date">[2026.2]</span> Check our very interesting Learning finding for LLM! <strong>Weak-Driven Learning: How Weak Agents make Strong Agents Stronger</strong>.</li>
+                <li class="news-item"><span class="news-date">[2026.1]</span> Check our very interesting theoretical finding for RLVR! <strong>Your Group-Relative Advantage Is Biased</strong>.</li>
+                <li class="news-item"><span class="news-date">[2025.11]</span> Welcome to check our survey! <strong>A Survey on LLM Ensemble</strong>.</li>
+            </ul>
+
+     <h2>Selected Preprint (* Equal Contribution, # Corresponding)</h2>
+
+
+
+            <div class="pub-item">
+                <div class="pub-title">Agent Exploration Toward Artificial General Intelligence: A Survey <span class="pub-links"><a href="https://github.com/banyikun/agent_exploration/blob/main/paper/" target="_blank">[Paper]</a> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6748619" target="_blank">[Paper-SSRN]</a> <a href="https://github.com/banyikun/epistemic_exploration" target="_blank">[Github]</a> <a href="https://www.banyikun.com/agent_exploration/" target="_blank">[Website]</a></span></div>
+                <div class="pub-authors"> <strong>Ban, Yikun</strong> and Yang, Fengkai and Chen, Fangzheng and Wang, Yibo and Chen, Zhijun and Li, Zhongyi and Huang, Zixuan and Zhang, Xiaoyuan and Li, Gongxun and Chen, Zehao and others </div>
+            </div>
+
+
+            <div class="pub-item">
+                <div class="pub-title">Policy Improvement Reinforcement Learning <span class="pub-links"><a href="https://arxiv.org/abs/2604.00860" target="_blank">[Paper]</a> <a href="https://jacckma.github.io/pirl/" target="_blank">[Github]</a></span></div>
+                <div class="pub-authors"> Huaiyang Wang, Xiaojie Li, Deqing Wang, Haoyi Zhou, Zixuan Huang, Yaodong Yang, Jianxin Li, <strong>Yikun Ban</strong>#</div>
+            </div>
+
+
+
+            <div class="pub-item">
+                <div class="pub-title">Counterfactual Credit Policy Optimization for Multi-Agent Collaboration <span class="pub-links"><a href="https://arxiv.org/abs/2604.00860" target="_blank">[Paper]</a> <a href="https://jacckma.github.io/pirl/" target="_blank">[Github]</a></span></div>
+                <div class="pub-authors">Zhongyi Li, Wan Tian, <strong>Yikun Ban</strong>#, Jinju Chen, Huiming Zhang, Yang Liu, Fuzhen Zhuang</div>
+            </div>
+
+            
+
+
+
+
+
+
+
+
+            
+
+
+
+
+            
+            <div class="pub-item">
+                <div class="pub-title">Weak-Driven Learning: How Weak Agents make Strong Agents Stronger <span class="pub-links"><a href="https://arxiv.org/abs/2602.08222" target="_blank">[Paper]</a> <a href="https://github.com/chenzehao82/Weak-Driven-Learning" target="_blank">[Github]</a> <a href="https://huggingface.co/papers/2602.08222" target="_blank">[Hugging Face]</a> <a href="https://mp.weixin.qq.com/s/yKUAn3rm3JCYGAWCd9XoIA" target="_blank">[PaperWeekly]</a> <a href="https://www.xiaohongshu.com/discovery/item/698def50000000001a035bb4?source=webshare&xhsshare=pc_web&xsec_token=ABUAcXdjDhnUJrf3JV_TRvxjnr1TJ3Dxv0CT8_8LjFcqM=&xsec_source=pc_share" target="_blank">[小红书]</a></span></div>
+                <div class="pub-authors">Zehao Chen, Gongxun Li, Tianxiang Ai, Yifei Li, Zixuan Huang, Wang Zhou, Fuzhen Zhuang, Xianglong Liu, Jianxin Li, Deqing Wang, <strong>Yikun Ban</strong># </div>
+            </div>
+
+
+
+
+            
+
+
+
+            <section aria-labelledby="publications-2026">
+            <h2 id="publications-2026">Selected Publications — 2026</h2>
+            <p class="publication-note">* Equal Contribution, # Corresponding</p>
+
+            <div class="pub-item">
+                <div class="pub-title">Bi-level Hierarchical Neural Contextual Bandits for Online Recommendation <span class="pub-links"><a href="https://dblp.org/db/journals/tmlr/tmlr2026.html#journals/tmlr/QiZBSRHPWH26" target="_blank">[DBLP]</a></span></div>
+                <div class="pub-authors">Yunzhe Qi, Yao Zhou, <strong>Yikun Ban</strong>, Allan Stewart, Chuanwei Ruan, Jiachuan He, Shishir Kumar Prasad, Haixun Wang, Jingrui He</div>
+                <div class="pub-venue">Transactions on Machine Learning Research (TMLR, 2026)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Harmonizing Gradient Matching For Fairness <span class="pub-links"><a href="https://dblp.org/db/journals/tmlr/tmlr2026.html#journals/tmlr/WuBH26" target="_blank">[DBLP]</a></span></div>
+                <div class="pub-authors">Ziwei Wu, <strong>Yikun Ban</strong>, Jingrui He</div>
+                <div class="pub-venue">Transactions on Machine Learning Research (TMLR, 2026)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">On the Bias of Group-Based Advantage Estimation <span class="pub-links"><a href="https://arxiv.org/pdf/2601.08521" target="_blank">[Paper]</a> <a href="https://huggingface.co/papers/2601.08521" target="_blank">[Hugging Face]</a> <a href="https://www.jiqizhixin.com/articles/2026-01-30-8" target="_blank">[机器之心]</a> <a href="https://www.xiaohongshu.com/discovery/item/6969ef7d000000001a02fcd3?source=webshare&xhsshare=pc_web&xsec_token=ABJlU8E24ABrJnqGZ3LC1zj4hYUdaWdgctnQmOebVGqrA=&xsec_source=pc_share" target="_blank">[小红书]</a></span></div>
+                <div class="pub-authors">Fengkai Yang, Zherui Chen, Xiaohan Wang, Xiaodong Lu, Jiajun Chai, Guojun Yin, Wei Lin, Fuzhen Zhuang, Shuai Ma, Deqing Wang, Yaodong Yang, <strong>Yikun Ban</strong>#</div>
+                <div class="pub-venue">Conference on Neural Information Processing Systems (NeurIPS'26, Poster)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Frequency-Aware Flow Matching for Continuous and Consistent Robotic Action Generation</div>
+                <div class="pub-authors">Jianing Guo, Fangzheng Chen, Zihao Mao, WONG Lik Hang Kenny, Zhenhong Wu, Yu Li, Yishuai Cai, Yuanpei Chen, <strong>Yikun Ban</strong>, Kai Chen, Qi Dou, Yaodong Yang, Xianglong Liu, Huijie Zhao, Simin Li</div>
+                <div class="pub-venue">Conference on Neural Information Processing Systems (NeurIPS'26, Poster)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Heterogeneous Agent Collaborative Reinforcement Learning <span class="pub-links"><a href="https://arxiv.org/abs/2603.02604" target="_blank">[Paper]</a> <a href="https://zzx-peter.github.io/hacrl/" target="_blank">[Project Page]</a> <a href="https://huggingface.co/papers/2603.02604" target="_blank">[Hugging Face]</a> <a href="https://mp.weixin.qq.com/s/ggzim_4PcuSAj-dQEwju8Q" target="_blank">[机器之心]</a> <a href="https://www.xiaohongshu.com/discovery/item/69abf870000000001a0251b9?source=webshare&xhsshare=pc_web&xsec_token=ABfBB-tUswURPyieBvVnlNMpz0tJts_xSVlBopRQ0wATM=&xsec_source=pc_share" target="_blank">[小红书]</a></span></div>
+                <div class="pub-authors">Zhixia Zhang, Zixuan Huang, Gongxun Li, Huaiyang Wang, Chengyi Yuan, Xin Xia, Deqing Wang, Fuzhen Zhuang, Shuai Ma, Ning Ding, Yaodong Yang, <strong>Yikun Ban</strong>#</div>
+                <div class="pub-venue">Conference on Neural Information Processing Systems (NeurIPS'26, Poster)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Adaptive Robust Estimator for Policy Optimization in Reinforcement Learning</div>
+                <div class="pub-authors">Zhongyi Li, Wan Tian, Jingyu Chen, Kangyao Huang, Huiming Zhang, Hui Yang, Tao Ren, Ruijie Wang, Yijie Peng, <strong>Yikun Ban</strong>, Fuzhen Zhuang</div>
+                <div class="pub-venue">Conference on Neural Information Processing Systems (NeurIPS'26, Poster)</div>
+            </div>
+
+             
+
+            
+              <div class="pub-item">
+                <div class="pub-title">Alignment-Free Multi-Modality Large-Small Model Bidirectional Collaboration with Missing Modality <span class="pub-links"><a href="https://dblp.org/db/conf/kdd/kdd2026-2.html#conf/kdd/GuoMTFZBHDZ26" target="_blank">[DBLP]</a></span></div>
+                <div class="pub-authors">Wei Guo, Jiale Mao, Yiqi Tong, Chuyu Fang, Xiao Zhang, <strong>Yikun Ban</strong>, Zhaojun Hu, Yiyang Duan, Fuzhen Zhuang</div>
+                <div class="pub-venue">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD'26), pp. 1451–1461</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">CDRRM: Contrast-Driven Rubric Generation for Reliable and Interpretable Reward Modeling <span class="pub-links"><a href="https://arxiv.org/abs/2603.08035" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Dengcan Liu, Fengkai Yang, Xiaohan Wang, Shurui Yan, Jiajun Chai, Jiahao Li,  <strong>Yikun Ban</strong>, Zhendong Mao, Wei Lin, Guojun Yin</div>
+                 <div class="pub-venue">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD'26)</div>
+            </div>
+
+
+
+             
+            <div class="pub-item">
+                <div class="pub-title">Does Your Reasoning Model Implicitly Know When to Stop Thinking? <span class="pub-links"><a href="https://arxiv.org/abs/2602.08354" target="_blank">[paper]</a> <a href="https://github.com/shenlilinghua-ux/sage-rl" target="_blank">[Code]</a> <a href="https://huggingface.co/papers/2602.08354" target="_blank">[Hugging Face]</a> <a href="https://www.xiaohongshu.com/discovery/item/699b0f99000000001a027b57?source=webshare&xhsshare=pc_web&xsec_token=ABXPzYSr4cblNXfX7pibQ8laueji_7XYEfUrbOMK3SKes=&xsec_source=pc_share" target="_blank">[小红书]</a></span></div>
+                <div class="pub-authors">Zixuan Huang, Xin Xia, Yuxi Ren, Jianbin Zheng, Xuanda Wang, Zhixia Zhang, Hongyan Xie, Songshi Liang, Zehao Chen, Xuefeng Xiao, Fuzhen Zhuang, Jianxin Li, <strong>Yikun Ban</strong>#, Deqing Wang </div>
+                 <div class="pub-venue">International Conference on Machine Learning (ICML'26)</div>
+            </div>
+
+
+
+            <div class="pub-item">
+                <div class="pub-title">Real-Time Aligned Reward Model beyond Semantics <span class="pub-links"><a href="https://arxiv.org/abs/2601.22664" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Zixuan Huang, Xin Xia, Yuxi Ren, Jianbin Zheng, Xuefeng Xiao, Hongyan Xie, Li Huaqiu, Songshi Liang, Zhongxiang Dai, Fuzhen Zhuang, Jianxin Li,  <strong>Yikun Ban</strong>#, Deqing Wang</div>
+                 <div class="pub-venue">International Conference on Machine Learning (ICML'26)</div>
+            </div>
+
+
+            
+
+            <div class="pub-item">
+                <div class="pub-title">Contextual Rollout Bandits for Reinforcement Learning with Verifiable Rewards <span class="pub-links"><a href="https://arxiv.org/abs/2602.08499" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Xiaodong Lu, Xiaohan Wang, Jiajun Chai, Guojun Yin, Wei Lin, Zhijun Chen, Yu Luo, Fuzhen Zhuang, <strong>Yikun Ban</strong>#, Deqing Wang </div>
+                 <div class="pub-venue">International Conference on Machine Learning (ICML'26)</div>
+            </div>
+
+            
+            <div class="pub-item">
+                <div class="pub-title">T-POP: Test-Time Personalization with Online Preference Feedback <span class="pub-links"><a href="https://arxiv.org/pdf/2509.24696" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Qu Zikun, Min Zhang, Mingze Kong, Xiang Li, Zhiwei Shang, Zhiyong Wang, <strong>Yikun Ban</strong>, Shuang Qiu, Yao Shu, Zhongxiang Dai </div>
+                 <div class="pub-venue">International Conference on Machine Learning (ICML'26)</div>
+            </div>
+
+
+       
+
+            <div class="pub-item">
+                <div class="pub-title">Harnessing Multiple Large Language Models: A Survey on LLM Ensemble <span class="pub-links"><a href="https://arxiv.org/abs/2502.18036" target="_blank">[paper]</a> <a href="https://github.com/junchenzhi/Awesome-LLM-Ensemble" target="_blank">[github]</a></span></div>
+                <div class="pub-authors">Zhijun Chen, Jingzheng Li, Pengpeng Chen, Zhuoran Li, Kai Sun, Yuankai Luo, Qianren Mao, Ming Li, Likang Xiao, Dingqi Yang, <strong>Yikun Ban</strong>#, Hailong Sun, Philip S. Yu</div>
+                <div class="pub-venue">International Joint Conferences on Artificial Intelligence (IJCAI'26)</div>
+            </div>
+
+
+              <div class="pub-item">
+                <div class="pub-title">Neural Exploitation and Exploration of Contextual Bandits <span class="pub-links"><a href="https://arxiv.org/pdf/2305.03784" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>, Yuchen Yan, Arindam Banerjee, Jingrui He</div>
+                <div class="pub-venue">Journal of Machine Learning Research (JMLR, 2026)</div>
+            </div>
+            
+
+
+            <div class="pub-item">
+                <div class="pub-title">GCL-OT: Graph Contrastive Learning with Optimal Transport for Heterophilic Text-Attributed Graphs <span class="pub-links"><a href="https://dblp.org/db/conf/aaai/aaai2026.html#conf/aaai/RenBT26" target="_blank">[DBLP]</a></span></div>
+                <div class="pub-authors">Yating Ren, <strong>Yikun Ban</strong>, Huobin Tan</div>
+                <div class="pub-venue">AAAI Conference on Artificial Intelligence (AAAI'26), pp. 25142–25150</div>
+            </div>
+            </section>
+
+            <section aria-labelledby="publications-earlier">
+            <h2 id="publications-earlier">Selected Publications — 2025 &amp; Earlier</h2>
+            <div class="pub-item">
+                <div class="pub-title">Transformer Copilot: Learning from The Mistake Log in LLM Fine-tuning <span class="pub-links"><a href="https://arxiv.org/pdf/2505.16270" target="_blank">[paper]</a> <a href="https://github.com/jiaruzouu/TransformerCopilot" target="_blank">[github]</a> <a href="https://www.xiaohongshu.com/discovery/item/69355ff1000000000d03fdf4?source=webshare&xhsshare=pc_web&xsec_token=AB-Egs7EePji9xaWL5sQQIAhxsjveGCPgWVrghvOezt7E=&xsec_source=pc_share" target="_blank">[小红书]</a></span></div>
+                <div class="pub-authors">Jiaru Zou, <strong>Yikun Ban</strong>#, Zihao Li, Yunzhe Qi, Ruizhong Qiu, Ling Yang, Jingrui He#</div>
+                <div class="pub-venue">Thirty-ninth Conference on Neural Information Processing Systems (NeurIPS'25, Spotlight)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Adaptive Sample Scheduling for Direct Preference Optimization <span class="pub-links"><a href="https://github.com/hzx122/SamS" target="_blank">[github]</a> <a href="https://arxiv.org/pdf/2506.17252" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Zixuan Huang, <strong>Yikun Ban</strong>#, Lean Fu, Xiaojie Li, Zhongxiang Dai, Jianxin Li, Deqing Wang#</div>
+                <div class="pub-venue">Thirty-ninth Conference on Neural Information Processing Systems (NeurIPS'25)</div>
+            </div>
+            
+            <div class="pub-item">
+                <div class="pub-title">LLM-Forest: Ensemble Learning of LLMs with Graph-Augmented Prompts for Data Imputation <span class="pub-links"><a href="https://arxiv.org/abs/2410.21520" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Xinrui He, <strong>Yikun Ban</strong>#, Jiaru Zou, Tianxin Wei, Curtiss Cook, Jingrui He#</div>
+                <div class="pub-venue">The 63rd Annual Meeting of the Association for Computational Linguistics, Findings (ACL'25)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Adaptive Sampling-based Dynamic Graph Learning for Information Diffusion Prediction <span class="pub-links"><a href="https://dl.acm.org/doi/pdf/10.1145/3744643" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Xiaodong Lu, Mingzhe Liu, Tongyu Zhu, Leilei Sun, Jibin Wang, Weifeng Lv, <strong>Yikun Ban</strong>, Deqing Wang</div>
+                <div class="pub-venue">ACM Transactions on Information Systems (TOIS, 2025)</div>
+            </div>
+
+
+         
+
+            <div class="pub-item">
+                <div class="pub-title">Can Graph Neural Networks Learn Language with Extremely Weak Text Supervision? <span class="pub-links"><a href="https://arxiv.org/abs/2412.08174" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Zihao Li, Lecheng Zheng, Bowen Jin, Dongqi Fu, Baoyu Jing, <strong>Yikun Ban</strong>, Jingrui He, Jiawei Han</div>
+                <div class="pub-venue">The 63rd Annual Meeting of the Association for Computational Linguistics, Main (ACL'25)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Robust Neural Contextual Bandit against Adversarial Corruptions <span class="pub-links"><a href="https://openreview.net/pdf?id=6U8iV9HVpS" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Yunzhe Qi, <strong>Yikun Ban</strong>, Arindam Banerjee, Jingrui He</div>
+                <div class="pub-venue">Thirty-eighth Conference on Neural Information Processing Systems (NeurIPS'24)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">PageRank Bandits for Link Prediction <span class="pub-links"><a href="https://arxiv.org/pdf/2411.01410" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>*, Jiaru Zou*, Zihao Li, Yunzhe Qi, Dongqi Fu, Jian Kang, Hanghang Tong, Jingrui He</div>
+                <div class="pub-venue">Thirty-eighth Conference on Neural Information Processing Systems (NeurIPS'24)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Meta Clustering of Neural Bandits <span class="pub-links"><a href="https://arxiv.org/pdf/2408.05586" target="_blank">[paper]</a> <a href="https://github.com/banyikun/MCNB" target="_blank">[github]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>*, Yunzhe Qi*, Tianxin Wei, Lihui Liu, Jingrui He</div>
+                <div class="pub-venue">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD'24)</div>
+            </div>
+
+          
+
+            <div class="pub-item">
+                <div class="pub-title">Neural Contextual Bandits for Personalized Recommendation <span class="pub-links"><a href="https://www.banyikun.com/wwwtutorial/" target="_blank">[website]</a> <a href="https://arxiv.org/pdf/2312.14037" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>, Yunzhe Qi, Jingrui He</div>
+                <div class="pub-venue">The Web Conference, Tutorial (WWW'24)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Neural Active Learning Beyond Bandits <span class="pub-links"><a href="https://openreview.net/pdf?id=g1S72T3FGc" target="_blank">[paper]</a> <a href="https://github.com/agarwalishika/NeurONAL" target="_blank">[github]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>, Ishika Agarwal, Ziwei Wu, Yada Zhu, Kommy Weldemariam, Hanghang Tong, Jingrui He</div>
+                <div class="pub-venue">International Conference on Learning Representations (ICLR'24)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Contextual Bandits with Online Neural Regression <span class="pub-links"><a href="https://arxiv.org/abs/2312.07145" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Rohan Deb, <strong>Yikun Ban</strong>, Shiliang Zuo, Jingrui He, Arindam Banerjee</div>
+                <div class="pub-venue">International Conference on Learning Representations (ICLR'24)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Meta-Learning with Neural Bandit Scheduler <span class="pub-links"><a href="https://openreview.net/forum?id=Z2L7F0nekb" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Yunzhe Qi*, <strong>Yikun Ban</strong>*, Tianxin Wei, Jiaru Zou, Huaxiu Yao, Jingrui He</div>
+                <div class="pub-venue">Thirty-seventh Conference on Neural Information Processing Systems (NeurIPS'23)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Graph Neural Bandits <span class="pub-links"><a href="https://arxiv.org/abs/2308.10808" target="_blank">[paper]</a> <a href="https://github.com/yunzhe0306/GNB-Pytorch/tree/main" target="_blank">[github]</a></span></div>
+                <div class="pub-authors">Yunzhe Qi*, <strong>Yikun Ban</strong>*, Jingrui He</div>
+                <div class="pub-venue">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD'23)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Improved Algorithms for Neural Active Learning <span class="pub-links"><a href="https://arxiv.org/abs/2210.00423" target="_blank">[paper]</a> <a href="https://github.com/matouk98/I-NeurAL" target="_blank">[github]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>*, Yuheng Zhang*, Hanghang Tong, Arindam Banerjee, Jingrui He</div>
+                <div class="pub-venue">Thirty-sixth Conference on Neural Information Processing Systems (NeurIPS'22)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">DISCO: Comprehensive and Explainable Disinformation Detection <span class="pub-links"><a href="https://arxiv.org/pdf/2203.04928.pdf" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Dongqi Fu, <strong>Yikun Ban</strong>, Hanghang Tong, Ross Maciejewski, Jingrui He</div>
+                <div class="pub-venue">ACM International Conference on Information and Knowledge Management (CIKM'22, Demo Track)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Neural Bandit with Arm Group Graph <span class="pub-links"><a href="https://arxiv.org/abs/2206.03644" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Yunzhe Qi, <strong>Yikun Ban</strong>, Jingrui He</div>
+                <div class="pub-venue">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD'22)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">EE-Net: Exploitation-Exploration Neural Networks in Contextual Bandits <span class="pub-links"><a href="https://arxiv.org/abs/2110.03177" target="_blank">[paper]</a> <a href="https://github.com/banyikun/EE-Net-ICLR-2022" target="_blank">[github]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>, Yuchen Yan, Arindam Banerjee, Jingrui He</div>
+                <div class="pub-venue">International Conference on Learning Representations (ICLR'22, Spotlight)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Convolutional Neural Bandit for Visual-aware Recommendation <span class="pub-links"><a href="https://arxiv.org/abs/2107.07438" target="_blank">[paper]</a> <a href="https://github.com/banyikun/CNN-UCB" target="_blank">[github]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>, Jingrui He</div>
+                <div class="pub-venue">Preprint: ArXiv:2107.07438</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Multi-Facet Contextual Bandits: A Neural Network Perspective <span class="pub-links"><a href="https://arxiv.org/abs/2106.03039" target="_blank">[paper]</a> <a href="https://github.com/banyikun/banyikun.github.io/blob/master/slides/kdd21_multi-facet.pdf" target="_blank">[slides]</a> <a href="https://github.com/banyikun/KDD2021_MuFasa" target="_blank">[github]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>, Jingrui He, Curtiss B. Cook</div>
+                <div class="pub-venue">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD'21)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Local Clustering in Contextual Multi-Armed Bandits <span class="pub-links"><a href="https://arxiv.org/abs/2103.00063" target="_blank">[paper]</a> <a href="https://github.com/banyikun/banyikun.github.io/raw/master/slides/WWW'21%20Slides_final.pdf" target="_blank">[slides]</a> <a href="https://github.com/banyikun/LOCB" target="_blank">[github]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>, Jingrui He</div>
+                <div class="pub-venue">The Web Conference (WWW'21)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Dynamic Knowledge Graph Alignment <span class="pub-links"><a href="https://www.aaai.org/AAAI21Papers/AAAI-10116.YanY.pdf" target="_blank">[paper]</a></span></div>
+                <div class="pub-authors">Yuchen Yan, Lihui Liu, <strong>Yikun Ban</strong>, Baoyu Jing, Hanghang Tong</div>
+                <div class="pub-venue">AAAI Conference on Artificial Intelligence (AAAI'21)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">Generic Outlier Detection in Multi-Armed Bandit <span class="pub-links"><a href="https://arxiv.org/abs/2007.07293" target="_blank">[paper]</a> <a href="https://github.com/banyikun/banyikun.github.io/raw/master/slides/GOLD_KDD_2020_long_2.pptx" target="_blank">[slides]</a> <a href="https://anonymous.4open.science/r/8f096b64-734d-4718-b96b-c3f8ec6d338d/" target="_blank">[github]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>, Jingrui He</div>
+                <div class="pub-venue">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD'20)</div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-title">No Place to Hide: Catching Fraudulent Entities in Tensors <span class="pub-links"><a href="https://arxiv.org/pdf/1810.06230.pdf" target="_blank">[paper]</a> <a href="https://github.com/banyikun/banyikun.github.io/raw/master/slides/www19-ban-poster.pdf" target="_blank">[poster]</a></span></div>
+                <div class="pub-authors"><strong>Yikun Ban</strong>, Xin liu, Ling Huang, Yitao Duan, Xue Liu, Wei Xu</div>
+                <div class="pub-venue">The Web Conference (WWW'19)</div>
+            </div>
+
+            </section>
+
+            <h2>Education</h2>
+
+            <div class="edu-item">
+                <div class="edu-period">Aug 2019 – Jun 2024</div>
+                <div class="edu-degree">Ph.D., Computer Science, Advised by Jingrui He and Hanghang Tong</div>
+                <div class="edu-school">University of Illinois at Urbana-Champaign, Illinois, US</div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-period">Aug 2016 – Jul 2019</div>
+                <div class="edu-degree">M.S., Computer Science</div>
+                <div class="edu-school">Peking University, Beijing, China</div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-period">Aug 2012 – Jul 2016</div>
+                <div class="edu-degree">B.S., School of Software Engineering</div>
+                <div class="edu-school">Wuhan University, Wuhan, China</div>
+            </div>
+
+            <footer>
+                <p>"Life is the exploitation and exploration."</p>
+                <p>"Don't follow the crowd. Let the crowd follow you."</p>
+                <p style="margin-top: 1.5rem; color: #1f2937;">© 2024, Yikun Ban</p>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
